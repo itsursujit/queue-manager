@@ -45,8 +45,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/",
-            "Sujit\\QueueManager\\": "packages/queue-manager/src"
+            "Tests\\": "tests/"
         }
     },
     "minimum-stability": "dev",
