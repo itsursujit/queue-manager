@@ -12,9 +12,6 @@ require('laravel-mix-purgecss');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css')
-    .sass('resources/sass/vendor.scss', 'public/css')
-    .extract()
-    .purgeCss()
-    .version();
+mix.js('./resources/assets/src/js/app.js', './resources/assets/app/js')
+    .sass('./resources/assets/src/scss/app.scss', './resources/assets/app/css')
+    .purgeCss();

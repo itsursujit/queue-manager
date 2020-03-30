@@ -1,0 +1,25 @@
+{
+    "name": "itsursujit/messenger",
+    "description": "Package to handle number renting and requesting service",
+    "keywords": ["framework", "laravel"],
+    "license": "MIT",
+    "type": "package",
+    "autoload": {
+        "psr-4": {
+            "Sujit\\Messenger\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Sujit\\Messenger\\MessengerServiceProvider"
+            ],
+            "aliases": {
+                "Messenger": "Sujit\\Messenger\\Facades\\MessengerFacade"
+            }
+        },
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
