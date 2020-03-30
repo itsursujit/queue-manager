@@ -14,7 +14,7 @@ class DashboardController extends Controller
 
     public function index()
     {
-        $payload = [
+        /*$payload = [
             'body' => 'this is test',
             'to' => '+9779856034616',
             'from' => 'sujit'
@@ -26,7 +26,8 @@ class DashboardController extends Controller
             ->withService($service->pivot)
             ->auth()
             ->send($payload);
-        dd($service);
+        dd($service);*/
+        dd(3);
         return view('messenger::messenger');
     }
 
