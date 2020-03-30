@@ -13,4 +13,9 @@ class MessageService extends BaseModel
         'slug',
         'avatar'
     ];
+
+    public function vendors()
+    {
+        $this->hasManyThrough(MessageVendor::class, VendorService::class);
+    }
 }

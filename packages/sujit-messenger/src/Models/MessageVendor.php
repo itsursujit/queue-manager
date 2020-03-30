@@ -14,4 +14,10 @@ class MessageVendor extends BaseModel
         'slug',
         'avatar'
     ];
+
+    public function services()
+    {
+        return $this->belongsToMany(MessageService::class, VendorService::class, 'vendor_id', 'service_id')
+            ->withPivot(app(VendorService::class)->getFillable());
+    }
 }

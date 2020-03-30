@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreateMessageVendorsTable extends Migration
@@ -18,8 +19,9 @@ class CreateMessageVendorsTable extends Migration
                 $table->bigIncrements('id');
                 $table->string('name');
                 $table->string('slug');
-                $table->string('avatar');
-                $table->timestamps();
+                $table->string('avatar')->nullable()->default(null);
+                $table->timestamp('created_at')->useCurrent();
+                $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             });
         }
     }

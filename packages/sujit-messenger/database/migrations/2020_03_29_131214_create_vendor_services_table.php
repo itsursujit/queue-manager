@@ -18,9 +18,16 @@ class CreateVendorServicesTable extends Migration
                 $table->bigIncrements('id');
                 $table->bigInteger('vendor_id');
                 $table->bigInteger('service_id');
-                $table->string('auth_url');
-                $table->string('message_sending_url');
-                $table->string('message_receiving_url');
+                $table->text('auth_extra_fields')->nullable()->default(null);
+                $table->text('auth_headers')->nullable()->default(null);
+                $table->text('message_sending_headers')->nullable()->default(null);
+                $table->text('message_receiving_headers')->nullable()->default(null);
+                $table->string('auth_url')->nullable()->default(null);
+                $table->string('auth_type')->nullable()->default(null);
+                $table->boolean('use_generated_token_for_auth')->nullable()->default(false);
+                $table->string('message_sending_url')->nullable()->default(null);
+                $table->string('message_receiving_url')->nullable()->default(null);
+                $table->string('notify_url')->nullable()->default(null);
                 $table->boolean('allow_sending')->nullable()->default(false);
                 $table->boolean('allow_receiving')->nullable()->default(false);
                 $table->boolean('allow_optout')->nullable()->default(false);
@@ -35,7 +42,8 @@ class CreateVendorServicesTable extends Migration
                 $table->integer('min_subscription_period')->nullable()->default(0);
                 $table->text('available_countries')->nullable()->default(null);
                 $table->text('credentials')->nullable()->default(null);
-                $table->timestamps();
+                $table->timestamp('created_at')->useCurrent();
+                $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             });
         }
     }

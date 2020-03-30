@@ -19,8 +19,9 @@ class CreateMessageServicesTable extends Migration
                 $table->bigIncrements('id');
                 $table->string('service');
                 $table->string('slug');
-                $table->string('avatar');
-                $table->timestamps();
+                $table->string('avatar')->nullable()->default(null);
+                $table->timestamp('created_at')->useCurrent();
+                $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             });
         }
     }

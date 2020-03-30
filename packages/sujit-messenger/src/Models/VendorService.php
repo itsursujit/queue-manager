@@ -10,11 +10,19 @@ class VendorService extends BaseModel
     protected $table = 'vendor_services';
 
     protected $fillable = [
+        'id',
         'vendor_id',
         'service_id',
         'auth_url',
+        'auth_type',
+        'auth_headers',
+        'auth_extra_fields',
         'message_sending_url',
         'message_receiving_url',
+        'message_sending_headers',
+        'message_receiving_headers',
+        'notify_url',
+        'use_generated_token_for_auth',
         'allow_sending',
         'allow_receiving',
         'allow_optout',
@@ -30,4 +38,14 @@ class VendorService extends BaseModel
         'available_countries',
         'credentials',
     ];
+
+    public function vendor()
+    {
+        return $this->hasOne(MessageVendor::class, 'vendor_id');
+    }
+
+    public function service()
+    {
+        return $this->hasOne(MessageService::class, 'service_id');
+    }
 }

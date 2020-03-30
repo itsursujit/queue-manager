@@ -6,7 +6,8 @@
     "type": "package",
     "autoload": {
         "psr-4": {
-            "Sujit\\Messenger\\": "src/"
+            "Sujit\\Messenger\\": "src/",
+            "Sujit\\Messenger\\Database\\Seed\\": "database/seeds/"
         }
     },
     "extra": {
