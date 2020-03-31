@@ -66,6 +66,7 @@ class DatabaseSeeder extends Seeder
             ]),
             'use_generated_token_for_auth' => true,
             'allow_sending' => true,
+            'allow_receiving' => true,
             'allow_custom_sender_id' => true,
             'use_as_sender_id' => true,
             'is_auto' => true,
@@ -75,5 +76,6 @@ class DatabaseSeeder extends Seeder
             'credentials' => json_encode(['applicationId' => '5c0c218ce4b07791c2ecc655', 'secret' => 'skMVqg6Gk8'])
         ]);
         $routee->services()->attach($virtualNumber);
+
     }
 }

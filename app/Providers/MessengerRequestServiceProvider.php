@@ -2,12 +2,18 @@
 
 namespace App\Providers;
 
+use App\Listeners\MatchedRouteListener;
+use Illuminate\Foundation\Support\Providers\EventServiceProvider as EventServiceProviderAlias;
 use Illuminate\Routing\Events\RouteMatched;
 use Illuminate\Support\Facades\Event;
-use Illuminate\Support\ServiceProvider;
 
-class MessengerRequestServiceProvider extends ServiceProvider
+class MessengerRequestServiceProvider extends EventServiceProviderAlias
 {
+    protected $listen = [
+        RouteMatched::class => [
+            MatchedRouteListener::class
+        ]
+    ];
     /**
      * Register services.
      *
@@ -25,8 +31,6 @@ class MessengerRequestServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Event::listen(RouteMatched::class, function (RouteMatched $r) {
-            dd($r->route->getName());
-        });
+        parent::boot();
     }
 }

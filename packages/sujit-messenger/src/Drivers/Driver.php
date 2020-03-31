@@ -4,6 +4,7 @@
 namespace Sujit\Messenger\Drivers;
 
 
+use Sujit\Messenger\Events\MessageSentEvent;
 use Sujit\Messenger\Http\Curl;
 use Sujit\Messenger\Models\VendorService;
 
@@ -61,8 +62,13 @@ abstract class Driver
         return $response;
     }
 
-    public function send($payload)
+    public function send($payload, $token = null)
     {
+        $user = auth()->user();
+        if(!empty($token))
+        {
+            $this->token = $token;
+        }
         if(!$this->service->allow_sending)
         {
             throw new \Exception('Sending is not allowed for this service');
@@ -75,10 +81,16 @@ abstract class Driver
         }
         $client = new Curl();
         $response = $client->post($url, $payload, $headers);
+        event(new MessageSentEvent($user, $this->vendor, $this->service, $payload, $response));
         return $response;
     }
 
-    public function receive()
+    public function receive($payload)
+    {
+
+    }
+
+    public function receiveCallback($payload)
     {
 
     }
