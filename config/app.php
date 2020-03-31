@@ -176,6 +176,8 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         \Sujit\Messenger\MessengerServiceProvider::class,
+
+        \App\Providers\MessengerRequestServiceProvider::class,
     ],
 
     /*

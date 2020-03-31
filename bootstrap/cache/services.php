@@ -35,6 +35,7 @@
     31 => 'App\\Providers\\EventServiceProvider',
     32 => 'App\\Providers\\RouteServiceProvider',
     33 => 'Sujit\\Messenger\\MessengerServiceProvider',
+    34 => 'App\\Providers\\MessengerRequestServiceProvider',
   ),
   'eager' => 
   array (
@@ -59,6 +60,7 @@
     18 => 'App\\Providers\\EventServiceProvider',
     19 => 'App\\Providers\\RouteServiceProvider',
     20 => 'Sujit\\Messenger\\MessengerServiceProvider',
+    21 => 'App\\Providers\\MessengerRequestServiceProvider',
   ),
   'deferred' => 
   array (
