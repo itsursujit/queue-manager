@@ -6,7 +6,6 @@ namespace Sujit\Messenger\Models;
 
 class MessengerLog extends BaseModel
 {
-    protected $table = 'messenger_logs';
 
     protected $fillable = [
         'user_id',
@@ -14,4 +13,10 @@ class MessengerLog extends BaseModel
         'request_data',
         'response',
     ];
+
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+        $this->setTable(config('messenger.tables.messenger_logs_table'));
+    }
 }

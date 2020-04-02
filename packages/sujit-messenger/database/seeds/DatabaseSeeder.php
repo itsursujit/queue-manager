@@ -3,14 +3,14 @@
 namespace Sujit\Messenger\Database\Seeds;
 
 use Illuminate\Database\Seeder;
-use Sujit\Messenger\Models\MessageService;
-use Sujit\Messenger\Models\MessageVendor;
+use Sujit\Messenger\Models\VendorService;
+use Sujit\Messenger\Models\Vendor;
 
 class DatabaseSeeder extends Seeder
 {
     public function run()
     {
-        $vendors = MessageVendor::insert([
+        $vendors = Vendor::insert([
             ['name' => 'Facebook', 'slug' => 'facebook'],
             ['name' => 'Asterik', 'slug' => 'asterik'],
             ['name' => 'Routee', 'slug' => 'routee'],
@@ -18,42 +18,42 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Viber', 'slug' => 'viber']
         ]);
 
-        $longcode = MessageService::create([
+        $longcode = VendorService::create([
             'service' => 'Longcode',
             'slug' => 'longcode'
         ]);
 
-        $shortcode = MessageService::create([
+        $shortcode = VendorService::create([
             'service' => 'Shortcode',
             'slug' => 'shortcode'
         ]);
 
-        $tollfree = MessageService::create([
+        $tollfree = VendorService::create([
             'service' => 'Tollfree',
             'slug' => 'tollfree'
         ]);
 
-        $virtualNumber = MessageService::create([
+        $virtualNumber = VendorService::create([
             'service' => 'Virtual Number',
             'slug' => 'virtual-number'
         ]);
 
-        $facebookService = MessageService::create([
+        $facebookService = VendorService::create([
             'service' => 'Facebook',
             'slug' => 'facebook'
         ]);
 
-        $whatsappService = MessageService::create([
+        $whatsappService = VendorService::create([
             'service' => 'Whatsapp',
             'slug' => 'whatsapp'
         ]);
 
-        $viberService = MessageService::create([
+        $viberService = VendorService::create([
             'service' => 'Viber',
             'slug' => 'viber'
         ]);
 
-        $routee = MessageVendor::where('slug', 'routee')->first();
+        $routee = Vendor::where('slug', 'routee')->first();
         $routee->services()->attach($longcode, [
             'message_sending_url' => 'https://connect.routee.net/sms',
             'auth_url' => 'https://auth.routee.net/oauth/token',

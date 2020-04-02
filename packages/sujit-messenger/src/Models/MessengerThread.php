@@ -6,7 +6,6 @@ namespace Sujit\Messenger\Models;
 
 class MessengerThread extends BaseModel
 {
-    protected $table = 'messenger_threads';
 
     protected $fillable = [
         'id',
@@ -15,4 +14,10 @@ class MessengerThread extends BaseModel
         'user_service_id',
         'recipient'
     ];
+
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+        $this->setTable(config('messenger.tables.messenger_threads_table'));
+    }
 }

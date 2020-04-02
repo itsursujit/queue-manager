@@ -14,8 +14,8 @@ class CreateMessageServicesTable extends Migration
     public function up()
     {
 
-        if(!Schema::hasTable('message_services')) {
-            Schema::create('message_services', function (Blueprint $table) {
+        if(!Schema::hasTable(config('messenger.tables.vendor_services_table'))) {
+            Schema::create(config('messenger.tables.vendor_services_table'), function (Blueprint $table) {
                 $table->bigIncrements('id');
                 $table->string('service');
                 $table->string('slug');
@@ -33,6 +33,6 @@ class CreateMessageServicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('message_services');
+        Schema::dropIfExists(config('messenger.tables.vendor_services_table'));
     }
 }

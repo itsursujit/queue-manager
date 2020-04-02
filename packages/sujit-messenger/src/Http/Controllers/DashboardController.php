@@ -11,7 +11,7 @@ use Sujit\Messenger\Events\MessageCallbackReceivedEvent;
 use Sujit\Messenger\Events\MessageReceivedEvent;
 use Sujit\Messenger\Events\MessageSentEvent;
 use Sujit\Messenger\Facades\MessengerFacade;
-use Sujit\Messenger\Models\MessageVendor;
+use Sujit\Messenger\Models\Vendor;
 
 class DashboardController extends Controller
 {
@@ -25,7 +25,7 @@ class DashboardController extends Controller
             'message' => 'this is test',
             'status' => 'PENDING'
         ];
-        $vendor = MessageVendor::where('slug', 'routee')->first();
+        $vendor = Vendor::where('slug', 'routee')->first();
         $service = $vendor->services()->first();
         $user = User::first();
         event(new MessageSentEvent($user, $vendor, $service, $payload, []));
@@ -48,7 +48,7 @@ class DashboardController extends Controller
             'message' => 'this is test',
             'status' => 'RECEIVING'
         ];
-        $vendor = MessageVendor::where('slug', 'routee')->first();
+        $vendor = Vendor::where('slug', 'routee')->first();
         $service = $vendor->services()->first();
         $user = User::first();
         event(new MessageReceivedEvent($user, $vendor, $service, $payload, []));
@@ -63,7 +63,7 @@ class DashboardController extends Controller
             'message' => 'this is test',
             'status' => 'CALLBACK'
         ];
-        $vendor = MessageVendor::where('slug', 'routee')->first();
+        $vendor = Vendor::where('slug', 'routee')->first();
         $service = $vendor->services()->first();
         $user = User::first();
         event(new MessageCallbackReceivedEvent($user, $vendor, $service, $payload, []));

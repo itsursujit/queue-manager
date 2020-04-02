@@ -13,8 +13,8 @@ class CreateVendorServicesTable extends Migration
      */
     public function up()
     {
-        if(!Schema::hasTable('vendor_services')) {
-            Schema::create('vendor_services', function (Blueprint $table) {
+        if(!Schema::hasTable(config('messenger.tables.vendor_service_details_table'))) {
+            Schema::create(config('messenger.tables.vendor_service_details_table'), function (Blueprint $table) {
                 $table->bigIncrements('id');
                 $table->bigInteger('vendor_id');
                 $table->bigInteger('service_id');
@@ -55,6 +55,6 @@ class CreateVendorServicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vendor_services');
+        Schema::dropIfExists(config('messenger.tables.vendor_service_details_table'));
     }
 }

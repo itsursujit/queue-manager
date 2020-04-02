@@ -6,7 +6,7 @@ namespace Sujit\Messenger\Drivers;
 
 use Sujit\Messenger\Events\MessageSentEvent;
 use Sujit\Messenger\Http\Curl;
-use Sujit\Messenger\Models\VendorService;
+use Sujit\Messenger\Models\VendorServiceDetails;
 
 abstract class Driver
 {
@@ -14,7 +14,7 @@ abstract class Driver
 
     public $extraFields;
     /**
-     * @var VendorService
+     * @var VendorServiceDetails
      */
     public $service;
 

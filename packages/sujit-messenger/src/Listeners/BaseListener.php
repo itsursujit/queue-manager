@@ -9,7 +9,7 @@ use Sujit\Messenger\Models\MessengerLog;
 use Sujit\Messenger\Models\MessengerThread;
 use Sujit\Messenger\Models\ThreadMessage;
 use Sujit\Messenger\Models\UserService;
-use Sujit\Messenger\Models\VendorService;
+use Sujit\Messenger\Models\VendorServiceDetails;
 
 abstract class BaseListener
 {
@@ -24,7 +24,7 @@ abstract class BaseListener
         $vendorId = $event->vendor->id;
         $serviceId = $event->service->id;
         $this->userId = $event->user->id;
-        $vendorService = VendorService::where('vendor_id', $vendorId)->where('service_id', $serviceId)->first();
+        $vendorService = VendorServiceDetails::where('vendor_id', $vendorId)->where('service_id', $serviceId)->first();
         if(!$vendorService)
         {
             return false;

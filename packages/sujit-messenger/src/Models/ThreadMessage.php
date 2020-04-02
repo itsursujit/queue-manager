@@ -6,7 +6,6 @@ namespace Sujit\Messenger\Models;
 
 class ThreadMessage extends BaseModel
 {
-    protected $table = 'messenger_thread_messages';
 
     protected $fillable = [
         'id',
@@ -15,4 +14,10 @@ class ThreadMessage extends BaseModel
         'status',
         'failed_reason'
     ];
+
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+        $this->setTable(config('messenger.tables.messenger_thread_messages_table'));
+    }
 }
